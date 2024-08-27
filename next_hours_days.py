@@ -31,3 +31,7 @@ def next_hours():
         hours_list.append(str(hours_count)+ " : " + "00" + " " + meradian)
         
     return hours_list
+
+
+if __name__=="__main__":
+    print(next_days())
