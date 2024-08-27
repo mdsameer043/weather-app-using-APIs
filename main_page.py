@@ -28,17 +28,39 @@ address= location.raw["address"]
 address_city = address.get("city")
 
 
+# # getting weather report start
+# def cityWeather(cityname):
+#     url = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather"
+#     querystring = {"city":cityname}
+#     headers = {
+#         "X-RapidAPI-Key": "ea77a70441msh0f1a928a9888502p13bdbbjsncaf20ee225b5",
+#         "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com"
+#     }
+#     response = requests.get(url, headers=headers, params=querystring)
+#     response=response.json()
+#     return response
+# # end of weather 
+
+
 # getting weather report start
 def cityWeather(cityname):
-    url = "https://weather-by-api-ninjas.p.rapidapi.com/v1/weather"
-    querystring = {"city":cityname}
-    headers = {
-        "X-RapidAPI-Key": "ea77a70441msh0f1a928a9888502p13bdbbjsncaf20ee225b5",
-        "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com"
-    }
-    response = requests.get(url, headers=headers, params=querystring)
-    response=response.json()
-    return response
+    url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{cityname}?key=7TMW77XPSC5H8ZQG8V3KJEBZT" 
+
+    response = requests.get(url)
+    weatherdata ={}
+    weatherdata["temp"]=response.json().get('days')[0].get('temp')
+    weatherdata["humidity"]=response.json().get('days')[0].get('humidity')
+    weatherdata["feels_like"]=response.json().get('days')[0].get('feelslike')
+    weatherdata["wind_speed"]=response.json().get('days')[0].get('windspeed')
+    weatherdata["wind_degrees"]=response.json().get('days')[0].get('winddir')
+    weatherdata["max_temp"]=response.json().get('days')[0].get('tempmax')
+    weatherdata["min_temp"]=response.json().get('days')[0].get('tempmin')
+    weatherdata["cloud_pct"]=response.json().get('days')[0].get('cloudcover')
+    weatherdata["wind_speed"]=response.json().get('days')[0].get('windspeed')
+    weatherdata["sunrise"]=response.json().get('days')[0].get('sunrise')
+    weatherdata["sunset"]=response.json().get('days')[0].get('sunset')
+    
+    return weatherdata
 # end of weather 
 
 
