@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="static/css/main_page.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-blue">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/details">more info</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" id="city_from" action="/" method="POST">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        id="input_query_main_page" name="input">
+                    <input type="text" name="city_query" id="city_query" style="visibility: collapse;" value="">
+                    <input type="text" name="city_query_validation" id="city_query_validation" style="visibility: collapse;" value="city_query_valid">
+                    <button id="submit_id_main_page" class="btn btn-outline-success"
+                        name="submit_form_main_page">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sky">
+        <img id="skyimage" src="{{url_for('static',filename='resources/img/sky1.jpeg')}}" alt=" not getting image">
+        <img id="sunimage" src="{{url_for('static',filename='resources/img/sun2.png')}}" alt="not getting image">
+        <div class="clouds">
+            <img id="cloud1_image" src="{{url_for('static',filename='resources/img/cloud1.png')}}"
+                alt="not getting image">
+            <img id="cloud2_image" src="{{url_for('static',filename='resources/img/cloud2.png')}}"
+                alt="not getting image">
+            <img id="cloud3_image" src="{{url_for('static',filename='resources/img/cloud3.png')}}"
+                alt="not getting image">
+            <img id="cloud4_image" src="{{url_for('static',filename='resources/img/cloud4.png')}}"
+                alt="not getting image">
+            <img id="cloud5_image" src="{{url_for('static',filename='resources/img/cloud5.png')}}"
+                alt="not getting image">
+            <img id="blackcloud6_image" src="{{url_for('static',filename='resources/img/darkcloud3.png')}}"
+                alt="not getting image">
+            <img id="blackcloud7_image" src="{{url_for('static',filename='resources/img/blackcloud4.png')}}"
+                alt="not getting image">
+            <img id="blackcloud8_image" src="{{url_for('static',filename='resources/img/blackcloud51.png')}}"
+                alt="not getting image">
+            <img id="blackcloud9_image" src="{{url_for('static',filename='resources/img/blackcloud6.png')}}"
+                alt="not getting image">
+            <img id="blackcloud10_image" src="{{url_for('static',filename='resources/img/blackcloud4.png')}}"
+                alt="not getting image">
+        </div>
+        <div class="sun">
+            <h1 id="boxcity">{{city}}</h1>
+            <h1 id="weather_mood">{% if mood %}{{mood}}{%else%}not known{% endif%}</h1>
+        </div>
+        <div class="rain"></div>
+    </div>
+
+
+    <div class="container" id="boxinfo">
+        <h1 id="boxday"><span id="day"></span>,</h1>
+        <h1 id="boxdate"><span id="date"></span></h1>
+        <h1 id="boxtime">Time : <span id="time"></span></h1>
+        <h1 id="boxtemp">{{temp}}<sup><span>&#8451;</span></sup></h1>
+        <h1 id="boxhumidity">humidity : {{humidity}}</h1>
+        <h1 id="boxwindspeed">Wind speed : {{wind_speed}}</h1>
+        <h1 id="boxfeelslike">Feels like : {{feels_like}}</span></h1>
+        <h1 id="boxwinddegrees">Wind degrees : {{wind_degrees}}</span></h1>
+    </div>
+
+    <div class="total_forcasting_data">
+        <!-- <p class="hourly_forcating_heading">Hourly Forcasting</p> -->
+        <div class="hourly_forcating_headings">
+            <div class="hourly_forcating_heading" id="hourly_data_button"><b>Hourly Forcasting</b></div>
+            <div class="hourly_forcating_heading" id="forcast_heading_gap">&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;</div>
+            <div class="hourly_forcating_heading" id="daily_data_button"><b>daily Forcasting</b></div>
+        </div>
+        <hr style="padding: 0%;margin-top:10px;margin-bottom:10px;width:50%">
+        <div class="align-items-center hourly_forcast_data_row"> 
+
+            {% for item,temp,conditions in forcast_data %}
+            <div class="align-items-center justify-content-center hourly_forcast_data_column">
+                <p {% if forcast_color %}style="color: {{forcast_color}};"{% endif %}>{{item}}</p>
+                <i class="uil {{conditions}}" id="forcast_icon" {% if forcast_color %}style="color: {{forcast_color}};"{% endif %}></i>
+                <p {% if forcast_color %}style="color: {{forcast_color}};"{% endif %}><span>&nbsp;&nbsp;{{temp}}</span><span>&#176;</span><span>F</span></p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- form for hours and daily forcast data -->
+    <form action="/" method="POST" id="forcast_type">
+        <input type="text" name="forcast_type_query" id="forcast_type_query_id" value="">
+        <input type="text" name="forcast_type_query_validation" id="forcast_type_query_validation" value="forcast_type_query_valid">
+    </form>
+    <!-- form for hours and daily forcast data -->
+
+
+    <script src="static/js/main_page.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+<i class="uil uil-sun"></i>
+<i class="uil uil-cloud"></i>
+<i class="uil uil-cloud-showers-heavy"></i>
+<i class="uil uil-cloud-sun-rain"></i>
+<i class="uil uil-cloud-sun"></i>
+<i class="uil uil-thunderstorm-sun"></i>
+<i class="uil uil-sunset"></i>
+<i class="uil uil-cloud-rain"></i>
+<i class="uil uil-wind-sun"></i>
+<i class="uil uil-mountains-sun"></i>
+<i class="uil uil-thunderstorm"></i>

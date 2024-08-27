@@ -1,0 +1,38 @@
+#bodyid{
+  margin: 0;
+  padding: 0;
+  background-image: url("../resources/img/sky1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#senddata1 {
+  visibility: hidden;
+  size: 0;
+}
+
+#headday {
+  font-size: 7vh;
+  position: absolute;
+  top: 6vh;
+  left: 2vw;
+}
+
+#headdate {
+  font-size: 4vh;
+  position: absolute;
+  top: 9vh;
+  left: 16vw;
+}
+
+#headtime {
+  position: absolute;
+  top: 8vh;
+  right: 3vw;
+}
+
+
+#input_query_details_page{
+  position: relative;
+  left: 10vw;
+}
