@@ -4,3 +4,4 @@ cleaned_dataset.csv
 weatherapi_request.py
 api_test.ipynb
 location
+tests
