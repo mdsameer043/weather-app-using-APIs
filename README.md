@@ -51,5 +51,6 @@ git status
   
 ![weather_site_mainpage](https://github.com/user-attachments/assets/c5d27813-c616-44b7-aae5-2e1fc3f27512)
 
-
+### Future Scope
+ + You can also use machine learning algorithm on the data received from API's to predict the weather of present day or future day's and compare your answer with the data received from websites to check the working of your algorithm. 
 
