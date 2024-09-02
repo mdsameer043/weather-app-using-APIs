@@ -48,4 +48,8 @@ git status
 + You have to make a 'API key' in the visual crossing through that you are able to fetch the weather data from the site. That you can use to provide weather conditions of different places to your users.
 + The Plase maked as "Enter your API key" replace it with your api key, And you are good to go.
 + Run the python file to see the Result
+  
+![weather_site_mainpage](https://github.com/user-attachments/assets/c5d27813-c616-44b7-aae5-2e1fc3f27512)
+
+
 
